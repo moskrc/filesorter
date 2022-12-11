@@ -1,9 +1,11 @@
 [tool.poetry]
 name = "simple_file_sorter"
-version = "0.1.1"
+version = "0.1.2"
 description = "Simple File Sorter"
 authors = ["Vitalii Shishorin <moskrc@gmail.com>"]
 readme = "README.md"
+repository = "https://github.com/moskrc/filesorter"
+keywords = ["sort", "file_sorter", "file", "sorter"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
