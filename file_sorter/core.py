@@ -41,4 +41,5 @@ class FileSorter:
                 file.rename(dest_folder.joinpath(file.name))
 
 
-FileSorter().sort()
+def sort():
+    FileSorter().sort()

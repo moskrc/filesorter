@@ -8,4 +8,5 @@ pytest-report.xml
 .coverage
 coverage.xml
 htmlcov
+dist
 .env
