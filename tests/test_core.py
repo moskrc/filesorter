@@ -31,7 +31,9 @@ class TestFileSorter:
         assert len(sorter._get_files()) == len(files_list)
         assert all([x in [x.name for x in sorter._get_files()] for x in files_list])
 
-    def test_get_files_with_subdirectories(self, create_files_with_subdirectories, files_list):
+    def test_get_files_with_subdirectories(
+        self, create_files_with_subdirectories, files_list
+    ):
         sorter = FileSorter(path=create_files_with_subdirectories)
         assert type(sorter._get_files()) == list
         assert len(sorter._get_files()) == len(files_list)
@@ -43,7 +45,12 @@ class TestFileSorter:
         assert FileSorter.get_folder_name(file) == file_name.split(".")[-1]
 
     def test_sort(self, create_files, files_list, monkeypatch):
-        monkeypatch.setattr('builtins.input', lambda _: "y")
+        monkeypatch.setattr("builtins.input", lambda _: "y")
         sorter = FileSorter(path=create_files)
         sorter.sort()
-        assert all([x.split('.')[-1] in [x.name for x in Path(sorter.dest_path).glob("*")] for x in files_list])
+        assert all(
+            [
+                x.split(".")[-1] in [x.name for x in Path(sorter.dest_path).glob("*")]
+                for x in files_list
+            ]
+        )
