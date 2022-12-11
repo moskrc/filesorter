@@ -1,5 +1,6 @@
 import pathlib
 from typing import Iterable
+import argparse
 
 DEFAULT_DEST_DIR = "sorted"
 
@@ -42,4 +43,9 @@ class FileSorter:
 
 
 def sort():
-    FileSorter().sort()
+    parser = argparse.ArgumentParser(description='File sorter')
+    parser.add_argument('-s', '--src', help='Source dir', default='.', required=False)
+    parser.add_argument('-d', '--dst', help='Destination dir', required=False)
+    args = parser.parse_args()
+
+    FileSorter(args.src, args.dst).sort()
