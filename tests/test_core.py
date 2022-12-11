@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pytest
 
-from file_sorter import FileSorter, core
+from simple_file_sorter import FileSorter, core
 
 
 class TestFileSorter:
