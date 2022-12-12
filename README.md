@@ -32,13 +32,13 @@ $ simple_file_sorter -s ~/Downloads
 
 # Development
 
-## How to run tests
+## Tests
 
 ```bash
 $ poetry run make test
 ```
 
-## How to run linters
+## Linters
 
 ```bash
 $ poetry run make format
