@@ -1,9 +1,9 @@
-import io
 from pathlib import Path
 
 import pytest
 
-from simple_file_sorter import FileSorter, core
+from simple_file_sorter import core
+from simple_file_sorter.core import FileSorter
 
 
 class TestFileSorter:
@@ -16,9 +16,7 @@ class TestFileSorter:
     def test_init_with_path(self, test_dir):
         sorter = FileSorter(path=test_dir)
         assert str(sorter.path) == test_dir
-        assert str(sorter.dest_path) == str(
-            Path(test_dir).joinpath(core.DEFAULT_DEST_DIR)
-        )
+        assert str(sorter.dest_path) == str(Path(test_dir).joinpath(core.DEFAULT_DEST_DIR))
 
     def test_init_with_dest_path(self):
         test_dest_dir = "test_dest_dir"
@@ -31,9 +29,7 @@ class TestFileSorter:
         assert len(sorter._get_files()) == len(files_list)
         assert all([x in [x.name for x in sorter._get_files()] for x in files_list])
 
-    def test_get_files_with_subdirectories(
-        self, create_files_with_subdirectories, files_list
-    ):
+    def test_get_files_with_subdirectories(self, create_files_with_subdirectories, files_list):
         sorter = FileSorter(path=create_files_with_subdirectories)
         assert type(sorter._get_files()) == list
         assert len(sorter._get_files()) == len(files_list)
@@ -49,8 +45,5 @@ class TestFileSorter:
         sorter = FileSorter(path=create_files)
         sorter.sort()
         assert all(
-            [
-                x.split(".")[-1] in [x.name for x in Path(sorter.dest_path).glob("*")]
-                for x in files_list
-            ]
+            [x.split(".")[-1] in [x.name for x in Path(sorter.dest_path).glob("*")] for x in files_list]
         )

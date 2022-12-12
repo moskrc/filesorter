@@ -2,8 +2,8 @@
 
 ## What is it?
 
-Sometimes you have a folder with a lot of files, and you want 
-to sort them into folders. This is where FileSorter comes in. 
+Sometimes you have a folder with a lot of files, and you want
+to sort them into folders. This is where FileSorter comes in.
 It will sort your files into folders based on the file extension.
 
 ## How to install
@@ -28,4 +28,18 @@ options:
 
 ```bash
 $ simple_file_sorter -s ~/Downloads
+```
+
+# Development
+
+## How to run tests
+
+```bash
+$ poetry run make test
+```
+
+## How to run linters
+
+```bash
+$ poetry run make format
 ```

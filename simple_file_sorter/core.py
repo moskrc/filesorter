@@ -1,6 +1,5 @@
-import pathlib
-from typing import Iterable
 import argparse
+import pathlib
 
 DEFAULT_DEST_DIR = "sorted"
 
@@ -9,13 +8,9 @@ class FileSorter:
     def __init__(self, path: str = ".", dest_path: str = None) -> None:
         self.path = pathlib.Path(path)
         self.files = self._get_files()
-        self.dest_path = (
-            self.path.joinpath(DEFAULT_DEST_DIR)
-            if not dest_path
-            else pathlib.Path(dest_path)
-        )
+        self.dest_path = self.path.joinpath(DEFAULT_DEST_DIR) if not dest_path else pathlib.Path(dest_path)
 
-    def _get_files(self) -> Iterable[pathlib.Path]:
+    def _get_files(self) -> list[pathlib.Path]:
         files = []
         for item in pathlib.Path(self.path).glob("*"):
             if item.is_file():

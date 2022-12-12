@@ -14,10 +14,12 @@ python = "^3.9"
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.2.0"
 black = "^22.10.0"
+pre-commit = "^2.20.0"
+pytest-cov = "^4.0.0"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-simple_file_sorter = "simple_file_sorter:sort"
+simple_file_sorter = "simple_file_sorter.core:sort"
