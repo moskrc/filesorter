@@ -14,24 +14,41 @@ $ pip install extsorter
 
 ## How to use
 ```bash
-usage: extsorter [-h] [-s SRC] [-d DST]
+$ extsorter -h
+
+usage: extsorter [-h] [-d DST] [src]
 
 Sort files by extension
 
+positional arguments:
+  src                source dir
+
 options:
   -h, --help         show this help message and exit
-  -s SRC, --src SRC  Source dir
-  -d DST, --dst DST  Destination dir
+  -d DST, --dst DST  destination dir
 ```
 
 ## Example
 
-Sort files in `~/Downloads` into `~/Downloads/sorted`:
+Sort files in current directory to a folder called `sorted` (name by default):
+
 ```bash
-$ extsorter -s ~/Downloads
+$ extsorter
+```
+
+Sort files in `~/Downloads` to `~/Downloads/old`:
+
+```bash
+$ extsorter ~/Downloads -d ~/Downloads/old
 ```
 
 # Development
+
+## Install
+
+```bash
+$ poetry install
+```
 
 ## Tests
 

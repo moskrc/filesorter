@@ -2,6 +2,8 @@ import argparse
 import os
 import pathlib
 
+DEFAULT_DST_FOLDER = "sorted"
+
 
 class FileSorter:
     def __init__(self, path: str, dest_path: str = "sorted") -> None:
@@ -43,9 +45,7 @@ class FileSorter:
 def sort():
     parser = argparse.ArgumentParser(prog='extsorter', description="Sort files by extension")
     parser.add_argument("src", nargs='?', help="source dir", default=os.getcwd())
-    parser.add_argument(
-        "-d", "--dst", help="destination dir", default=os.path.join(os.getcwd(), "sorted"), required=False
-    )
+    parser.add_argument("-d", "--dst", help="destination dir", default=DEFAULT_DST_FOLDER, required=False)
     args = parser.parse_args()
 
     FileSorter(args.src, args.dst).sort()
