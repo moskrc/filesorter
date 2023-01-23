@@ -2,26 +2,20 @@ from pathlib import Path
 
 import pytest
 
-from simple_file_sorter import core
-from simple_file_sorter.core import FileSorter
+from extsorter.core import FileSorter
 
 
 class TestFileSorter:
     def test_init_without_params(self):
-        sorter = FileSorter()
+        sorter = FileSorter(".")
         assert str(sorter.path) == "."
-        assert str(sorter.dest_path) == core.DEFAULT_DEST_DIR
+        assert str(sorter.dest_path) == "sorted"
 
     @pytest.mark.parametrize("test_dir", ["test_dir", "../test_dir/test_dir"])
     def test_init_with_path(self, test_dir):
         sorter = FileSorter(path=test_dir)
         assert str(sorter.path) == test_dir
-        assert str(sorter.dest_path) == str(Path(test_dir).joinpath(core.DEFAULT_DEST_DIR))
-
-    def test_init_with_dest_path(self):
-        test_dest_dir = "test_dest_dir"
-        sorter = FileSorter(dest_path=test_dest_dir)
-        assert str(sorter.dest_path) == test_dest_dir
+        assert str(sorter.dest_path) == "sorted"
 
     def test_get_files(self, create_files, files_list):
         sorter = FileSorter(path=create_files)
@@ -36,7 +30,7 @@ class TestFileSorter:
         assert all([x in [x.name for x in sorter._get_files()] for x in files_list])
 
     @pytest.mark.parametrize("file_name", ["test.abc", "test.123", "test.abc.123"])
-    def test_get_folder_name_for_file(self, file_name, monkeypatch):
+    def test_get_folder_name_for_file(self, file_name):
         file = Path(file_name)
         assert FileSorter.get_folder_name(file) == file_name.split(".")[-1]
 

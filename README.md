@@ -1,22 +1,22 @@
-# FileSorter - A simple file sorter
+# ExtSorter - A simple file sorter
 
 ## What is it?
 
 Sometimes you have a folder with a lot of files, and you want
-to sort them into folders. This is where FileSorter comes in.
+to sort them into folders. This is where ExtSorter comes in.
 It will sort your files into folders based on the file extension.
 
 ## How to install
 
 ```bash
-$ pip install simple_file_sorter
+$ pip install extsorter
 ```
 
 ## How to use
 ```bash
-usage: simple_file_sorter [-h] [-s SRC] [-d DST]
+usage: extsorter [-h] [-s SRC] [-d DST]
 
-File sorter
+Sort files by extension
 
 options:
   -h, --help         show this help message and exit
@@ -26,8 +26,9 @@ options:
 
 ## Example
 
+Sort files in `~/Downloads` into `~/Downloads/sorted`:
 ```bash
-$ simple_file_sorter -s ~/Downloads
+$ extsorter -s ~/Downloads
 ```
 
 # Development
